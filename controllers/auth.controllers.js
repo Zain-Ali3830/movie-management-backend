@@ -1,4 +1,7 @@
 import { pool } from "../database/index.js";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
 import bcrypt from "bcrypt";
 // Controller for user signup
 export const signup = async (req, res) => {
@@ -39,8 +42,11 @@ export const login = async (req, res) => {
     if (!(bcrypt.compare(password, user.rows[0].password))) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
-    console.log(user.rows[0].password);
-    res.json(user.rows[0]);
+    else{
+      const token=jwt.sign({ id: user.rows[0].id }, process.env.SECRET, { expiresIn: '1h' });
+      res.json({ token , user: user.rows[0] });
+      console.log("Login successful");
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
