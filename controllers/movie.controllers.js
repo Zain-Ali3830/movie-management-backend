@@ -24,3 +24,17 @@ export const getAllMovies = async (req,res)=>{
         res.status(500).json({message:error.message})
     }
 }
+
+
+
+// get movie by id
+export const getMovieById = async (req,res)=>{
+    try {
+        const {id} = req.params;
+        const getMovieById= await pool.query("SELECT * from movies WHERE id = $1",[id])
+        console.log(getMovieById.rows[0])
+        res.json(getMovieById.rows[0])
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}

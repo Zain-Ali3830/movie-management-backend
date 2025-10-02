@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import { authRouter } from './routes/auth.routes.js';
-import { movieRouter } from './routes/movie.controllers.js';
+import { movieRouter } from './routes/movie.routes.js';
 const app = express();
 app.use(cors({ origin: '*' }))
 dotenv.config();
