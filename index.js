@@ -16,4 +16,4 @@ app.listen(PORT, () => {
 });
 
 app.use('/api/auth', authRouter);
-app.use('/api/movies', movieRouter);
+app.use('/api', movieRouter);
