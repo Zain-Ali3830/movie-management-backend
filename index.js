@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import { authRouter } from './routes/auth.routes.js';
 import { movieRouter } from './routes/movie.routes.js';
+import bookingRouter from './routes/bookTicket.routes.js';
 const app = express();
 app.use(cors({ origin: '*' }))
 dotenv.config();
@@ -17,3 +18,4 @@ app.listen(PORT, () => {
 
 app.use('/api/auth', authRouter);
 app.use('/api', movieRouter);
+app.use('/api', bookingRouter);
