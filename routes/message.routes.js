@@ -4,6 +4,6 @@ import { messageValidation } from "../middlewares/message.middleware.js";
 
 const messageRouter = express.Router();
 
-messageRouter.route("/about").post(messageValidation, aboutMessages);
+messageRouter.route("/contact").post(messageValidation, aboutMessages);
 
 export default messageRouter;
